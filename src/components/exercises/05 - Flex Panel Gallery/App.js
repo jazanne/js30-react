@@ -12,6 +12,11 @@ export class FlexPanelGallery extends Component {
       ['Life', 'In', 'Motion']
     ];
   }
+
+  componentDidMount(){
+    document.querySelector("html").classList = "FlexGallery"
+  }
+
   render() {
     const panels = this.panels;
     return (
