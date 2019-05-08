@@ -11,6 +11,9 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
+              <Link to="/clock">02 - JS and CSS Clock</Link>
+            </li>
+            <li>
               <Link to="/flex-panel-gallery">05 - Flex Panel Gallery</Link>
             </li>
           </ul>
