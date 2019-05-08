@@ -2,35 +2,38 @@ import React, { Component } from 'react';
 import './style.css';
 
 export class FlexPanelGallery extends Component {
+  constructor(props) {
+    super(props);
+    this.panels = [
+      ['Hey', 'Let\'s', 'Dance'],
+      ['Give', 'Take', 'Receive'],
+      ['Experience', 'It', 'Today'],
+      ['Give', 'All', 'You can'],
+      ['Life', 'In', 'Motion']
+    ];
+  }
   render() {
     return (
       <div class="panels">
-        <div class="panel panel1">
-          <p>Hey</p>
-          <p>Let's</p>
-          <p>Dance</p>
-        </div>
-        <div class="panel panel2">
-          <p>Give</p>
-          <p>Take</p>
-          <p>Receive</p>
-        </div>
-        <div class="panel panel3">
-          <p>Experience</p>
-          <p>It</p>
-          <p>Today</p>
-        </div>
-        <div class="panel panel4">
-          <p>Give</p>
-          <p>All</p>
-          <p>You can</p>
-        </div>
-        <div class="panel panel5">
-          <p>Life</p>
-          <p>In</p>
-          <p>Motion</p>
-        </div>
+        <Panel para={this.panels[0]} num={1} />
+        <Panel para={this.panels[1]} num={2} />
+        <Panel para={this.panels[2]} num={3} />
+        <Panel para={this.panels[3]} num={4} />
+        <Panel para={this.panels[4]} num={5} />
       </div>
     );
   }
 };
+
+class Panel extends Component {
+  render() {
+    const panelClass = `panel panel${this.props.num}`;
+    return (
+      <div class={panelClass}>
+        <p>{this.props.para[0]}</p>
+        <p>{this.props.para[1]}</p>
+        <p>{this.props.para[2]}</p>
+      </div>
+    );
+  }
+}
