@@ -15,20 +15,34 @@ export class FlexPanelGallery extends Component {
   render() {
     const panels = this.panels;
     return (
-      <div class="panels">
-        {panels.map( (e, i) => <Panel para={e} num={i+1} />)}
+      <div className="panels">
+        {panels.map( (e, i) => <Panel para={e} num={i+1} key={i} />)}
       </div>
     );
   }
 };
 
 class Panel extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isHovered: false
+    };
+    this.handleHover = this.handleHover.bind(this);
+  }
+
+  handleHover(e) {
+    this.setState({
+      isHovered: e.type === 'mouseenter'
+    });
+  }
+
   render() {
-    const panelClass = `panel panel${this.props.num}`;
+    const panelClass = `panel panel${this.props.num} ${this.state.isHovered ? 'open-active' : ''}`;
     const words = this.props.para;
     return (
-      <div class={panelClass}>
-        {words.map( e => <p>{e}</p>)}
+      <div className={panelClass} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
+        {words.map( (e, i) => <p key={i}>{e}</p>)}
       </div>
     );
   }
