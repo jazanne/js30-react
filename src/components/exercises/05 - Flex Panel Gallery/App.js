@@ -13,13 +13,10 @@ export class FlexPanelGallery extends Component {
     ];
   }
   render() {
+    const panels = this.panels;
     return (
       <div class="panels">
-        <Panel para={this.panels[0]} num={1} />
-        <Panel para={this.panels[1]} num={2} />
-        <Panel para={this.panels[2]} num={3} />
-        <Panel para={this.panels[3]} num={4} />
-        <Panel para={this.panels[4]} num={5} />
+        {panels.map( (e, i) => <Panel para={e} num={i+1} />)}
       </div>
     );
   }
@@ -28,11 +25,10 @@ export class FlexPanelGallery extends Component {
 class Panel extends Component {
   render() {
     const panelClass = `panel panel${this.props.num}`;
+    const words = this.props.para;
     return (
       <div class={panelClass}>
-        <p>{this.props.para[0]}</p>
-        <p>{this.props.para[1]}</p>
-        <p>{this.props.para[2]}</p>
+        {words.map( e => <p>{e}</p>)}
       </div>
     );
   }
