@@ -26,22 +26,23 @@ class Panel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHovered: false
+      isOpen: false
     };
-    this.handleHover = this.handleHover.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleHover(e) {
+  handleClick(e) {
+    const prevState = this.state.isOpen;
     this.setState({
-      isHovered: e.type === 'mouseenter'
+      isOpen: !prevState
     });
   }
 
   render() {
-    const panelClass = `panel panel${this.props.num} ${this.state.isHovered ? 'open-active open' : ''}`;
+    const panelClass = `panel panel${this.props.num} ${this.state.isOpen ? 'open open-active' : ''}`;
     const words = this.props.para;
     return (
-      <div className={panelClass} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
+      <div className={panelClass} onClick={this.handleClick}>
         {words.map( (e, i) => <p key={i}>{e}</p>)}
       </div>
     );
