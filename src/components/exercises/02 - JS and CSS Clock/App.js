@@ -34,19 +34,17 @@ export class ClockContainer extends Component {
   }
 }
 
-class Clock extends Component {
-  render() {
-    const time = this.props.time;
-    return (
-      <div className="clock">
-        <div className="clock-face">
-          <HandContainer type='hour' maxPerRotation={12} time={time.getHours()} />
-          <HandContainer type='min' maxPerRotation={60} time={time.getMinutes()} />
-          <HandContainer type='second' maxPerRotation={60} time={time.getSeconds()} />
-        </div>
+const Clock = (props) => {
+  const time = props.time;
+  return (
+    <div className="clock">
+      <div className="clock-face">
+        <HandContainer type='hour' maxPerRotation={12} time={time.getHours()} />
+        <HandContainer type='min' maxPerRotation={60} time={time.getMinutes()} />
+        <HandContainer type='second' maxPerRotation={60} time={time.getSeconds()} />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 class HandContainer extends Component {
@@ -64,14 +62,12 @@ class HandContainer extends Component {
   }
 }
 
-class Hand extends Component {
-  render() {
-    const className = `hand ${this.props.type}-hand`;
-    const styles = {
-      transform: `rotate( ${this.props.rotateDeg}deg )`
-    };
-    return (
-      <div className={className} style={styles}></div>
-    );
-  }
+const Hand = (props) => {
+  const className = `hand ${props.type}-hand`;
+  const styles = {
+    transform: `rotate( ${props.rotateDeg}deg )`
+  };
+  return (
+    <div className={className} style={styles}></div>
+  );
 }
