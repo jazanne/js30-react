@@ -53,6 +53,11 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.panel.open {
+  flex: 5;
+}
+
 .panel > *:first-child {
   transform: translateY(-100%);
 }

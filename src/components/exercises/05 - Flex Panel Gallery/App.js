@@ -38,7 +38,7 @@ class Panel extends Component {
   }
 
   render() {
-    const panelClass = `panel panel${this.props.num} ${this.state.isHovered ? 'open-active' : ''}`;
+    const panelClass = `panel panel${this.props.num} ${this.state.isHovered ? 'open-active open' : ''}`;
     const words = this.props.para;
     return (
       <div className={panelClass} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
